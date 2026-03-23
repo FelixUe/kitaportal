@@ -1,8 +1,8 @@
 # 🌻 KitaPortal
 
-**Die offene, gemeinnützige Plattform für Kitas – statt WhatsApp-Chaos.**
+**Die offene, gemeinnützige Plattform für Kitas – statt Messenger-Chaos.**
 
-KitaPortal ersetzt Zettelwirtschaft, WhatsApp-Gruppen und veraltete Software durch eine einfache, datenschutzkonforme Web-App – kostenlos, open source, selbst hostbar.
+KitaPortal ersetzt Zettelwirtschaft, Messenger-Gruppen und veraltete Software durch eine einfache, datenschutzkonforme Web-App – kostenlos, open source, selbst hostbar.
 
 > Gebaut von Eltern, für Eltern und Erzieher·innen. Kein Konzern. Keine Werbung. Keine versteckten Kosten.
 
@@ -12,7 +12,7 @@ KitaPortal ersetzt Zettelwirtschaft, WhatsApp-Gruppen und veraltete Software dur
 
 In deutschen Kitas läuft Kommunikation heute so:
 
-- 📱 Krankmeldungen per WhatsApp an die Erzieherin
+- 📱 Krankmeldungen per WhatsApp an die Elterngruppe, damit andere Bescheid geben beim Abgeben ihrer eigenen Kinder.
 - 📄 Abholerlaubnisse auf Papierzetteln
 - 📋 Allergielisten in Excel-Dateien, die niemand aktuell hält
 - 💬 Elternrat-Koordination über mehrere private Chats
