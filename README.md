@@ -187,8 +187,8 @@ Sicherheitslücken bitte **nicht** als öffentliches Issue melden – stattdesse
 ## Kontakt & Community
 
 - 💬 Diskussionen: [GitHub Discussions](../../discussions)
-- 📧 E-Mail: hallo@kitaportal.org
-- 🤝 Initiiert in Zusammenarbeit mit der [AWO](https://www.awo.org)
+
+
 
 ---
 
