@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"Get-ChildItem 'C:\\\\Users\\\\felix\\\\Projekte\\\\kitaportal\\\\frontend' -Recurse | ForEach-Object { Write-Output \\\\$_.FullName }\")",
+      "Bash(powershell -Command \"Get-ChildItem -Path 'C:\\\\Users\\\\felix\\\\Projekte\\\\kitaportal' -Recurse -Filter 'client.js' | ForEach-Object { Write-Output \\\\$_.FullName }\")",
+      "Bash(rm -rf backend/ docs/ docker-compose.yml)",
+      "Bash(powershell -Command \"Remove-Item ''C:\\\\Users\\\\felix\\\\Projekte\\\\kitaportal\\\\frontend'' -Recurse -Force\")"
+    ]
+  }
+}

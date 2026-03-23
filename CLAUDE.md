@@ -8,10 +8,8 @@ KitaPortal is an open-source, GDPR-compliant web app for German daycare centers 
 
 ## Repository Layout
 
-All application code lives under `kitaportal/`:
-
 ```
-kitaportal/
+/
 ├── backend/        # Django REST API (Python 3.12)
 ├── frontend/       # React + Vite SPA
 ├── docs/           # Deployment and privacy docs
@@ -23,7 +21,7 @@ kitaportal/
 ### Backend
 
 ```bash
-cd kitaportal/backend
+cd backend
 python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 python manage.py migrate
@@ -33,7 +31,7 @@ python manage.py runserver          # http://localhost:8000
 ### Frontend
 
 ```bash
-cd kitaportal/frontend
+cd frontend
 npm install
 npm run dev        # http://localhost:5173
 npm run lint       # ESLint
@@ -43,7 +41,6 @@ npm run build      # production build
 ### Docker (full stack)
 
 ```bash
-cd kitaportal
 cp .env.example .env   # fill in DB_PASSWORD, SECRET_KEY, DOMAIN, API_URL
 docker compose up -d
 docker compose exec backend python manage.py migrate
