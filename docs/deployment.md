@@ -31,14 +31,14 @@ Danach erreichst du Coolify unter `http://DEINE-IP:8000`.
 
 1. In Coolify einloggen
 2. "New Resource" → "Docker Compose"
-3. GitHub-URL: `https://github.com/DEIN-USERNAME/kitaportal`
+3. GitHub-URL: `https://github.com/FelixUe/kitaportal`
 4. Umgebungsvariablen aus `.env.example` eintragen
 5. Deploy klicken
 
 ## Manuelles Deployment (ohne Coolify)
 
 ```bash
-git clone https://github.com/DEIN-USERNAME/kitaportal.git
+git clone https://github.com/FelixUe/kitaportal.git
 cd kitaportal
 cp .env.example .env
 # .env mit echten Werten befüllen (nano .env)
