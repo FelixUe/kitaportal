@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: kitaportal
+      POSTGRES_USER: kita
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://kita:${DB_PASSWORD}@db:5432/kitaportal
+      SECRET_KEY: ${SECRET_KEY}
+      ALLOWED_HOSTS: ${DOMAIN}
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      VITE_API_URL: ${API_URL}
+
+volumes:
+  pgdata:
