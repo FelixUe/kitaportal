@@ -75,7 +75,7 @@ KitaPortal ist eine schlanke Web-App, die alle typischen Kommunikations- und Ver
 
 ```bash
 # Repository klonen
-git clone https://github.com/DEIN-USERNAME/kitaportal.git
+git clone https://github.com/FelixUe/kitaportal.git
 cd kitaportal
 
 # Backend starten
