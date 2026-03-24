@@ -1,16 +1,8 @@
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
 import Krankmeldung from "./pages/Krankmeldung";
 import { useTheme } from "./hooks/useTheme";
 import styles from "./App.module.css";
-
-function Dashboard() {
-  return (
-    <div className={styles.placeholder}>
-      <h1>Dashboard</h1>
-      <p>Übersicht folgt in Kürze.</p>
-    </div>
-  );
-}
 
 export default function App() {
   const { theme, toggle } = useTheme();

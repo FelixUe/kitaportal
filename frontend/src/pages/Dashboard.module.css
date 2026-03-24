@@ -1,0 +1,238 @@
+.seite {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6) var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+/* ─── Greeting ───────────────────────────────────────────────────────────── */
+
+.begruessung {
+  padding-top: var(--space-4);
+}
+
+.gruss {
+  margin: 0 0 var(--space-2);
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  line-height: var(--line-height-tight);
+}
+
+.datum {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* ─── Section ────────────────────────────────────────────────────────────── */
+
+.abschnitt {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.abschnittTitel {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* ─── Kinder ─────────────────────────────────────────────────────────────── */
+
+.kinderRaster {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.kindKarte {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.kindKopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.kindName {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.kindGruppe {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Status badges */
+
+.statusBadge {
+  flex-shrink: 0;
+  padding: 2px var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.03em;
+}
+
+.statusAnwesend {
+  background: var(--color-success-subtle);
+  color: var(--color-success);
+  border: 1px solid var(--color-success-border);
+}
+
+.statusKrank {
+  background: var(--color-error-subtle);
+  color: var(--color-error);
+  border: 1px solid var(--color-error-border);
+}
+
+.statusAbwesend {
+  background: var(--color-surface-raised);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+/* ─── Schnellaktionen ────────────────────────────────────────────────────── */
+
+.aktionenRaster {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.aktionKarte {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.aktionKarte:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+  background: var(--color-accent-subtle);
+}
+
+.aktionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--color-accent-subtle);
+  color: var(--color-accent-text);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.aktionKarte:hover .aktionIcon {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.aktionLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  line-height: var(--line-height-tight);
+}
+
+.aktionBeschreibung {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-normal);
+}
+
+/* ─── Neuigkeiten ────────────────────────────────────────────────────────── */
+
+.neuigkeitenListe {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.neuigkeit {
+  padding: var(--space-5) var(--space-5) 0;
+}
+
+.neuigkeit:last-child {
+  padding-bottom: var(--space-5);
+}
+
+.neuigkeitKopf {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+.neuigkeitTitel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.neuigkeitDatum {
+  flex-shrink: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.neuigkeitText {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+}
+
+.trennlinie {
+  margin: var(--space-5) 0 0;
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 400px) {
+  .seite {
+    padding-inline: var(--space-4);
+  }
+
+  .aktionenRaster {
+    grid-template-columns: 1fr;
+  }
+}
