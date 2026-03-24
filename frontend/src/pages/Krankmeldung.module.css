@@ -1,32 +1,36 @@
 .seite {
-  max-width: 560px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  max-width: 600px;
+  margin: var(--space-12) auto;
+  padding: 0 var(--space-6);
 }
 
 .titel {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: #1a1a1a;
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0 0 var(--space-10);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.02em;
 }
+
+/* ─── Form layout ────────────────────────────────────────────────────────── */
 
 .formular {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: var(--space-7);
 }
 
 .feld {
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
+  gap: var(--space-2);
 }
 
 .zeile {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: var(--space-5);
 }
 
 @media (max-width: 480px) {
@@ -35,133 +39,167 @@
   }
 }
 
+/* ─── Labels ─────────────────────────────────────────────────────────────── */
+
 .label {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #374151;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
 }
 
 .optional {
-  font-weight: 400;
-  color: #6b7280;
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-muted);
+  text-transform: none;
+  letter-spacing: 0;
 }
+
+/* ─── Inputs ─────────────────────────────────────────────────────────────── */
 
 .eingabe,
 .auswahl,
 .textbereich {
   width: 100%;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 1rem;
-  color: #1a1a1a;
-  background: #fff;
-  box-sizing: border-box;
-  transition: border-color 0.15s;
+  padding: 0.625rem var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background: var(--color-surface);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.auswahl {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239a9790' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-4) center;
+  padding-right: var(--space-10);
+  cursor: pointer;
 }
 
 .eingabe:focus,
 .auswahl:focus,
 .textbereich:focus {
   outline: none;
-  border-color: #4f8a5f;
-  box-shadow: 0 0 0 3px rgba(79, 138, 95, 0.15);
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 14%, transparent);
 }
 
 .textbereich {
   resize: vertical;
-  min-height: 80px;
+  min-height: 96px;
+  line-height: var(--line-height-normal);
 }
 
-/* Symptom chips */
+/* ─── Symptom chips ──────────────────────────────────────────────────────── */
 
 .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
 }
 
 .chip {
-  padding: 0.375rem 0.875rem;
-  border: 1.5px solid #d1d5db;
-  border-radius: 999px;
-  background: #fff;
-  font-size: 0.875rem;
-  color: #374151;
+  padding: var(--space-2) var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .chip:hover {
-  border-color: #4f8a5f;
-  color: #4f8a5f;
+  border-color: var(--color-accent);
+  color: var(--color-accent-text);
+  background: var(--color-accent-subtle);
 }
 
 .chipAktiv {
-  background: #4f8a5f;
-  border-color: #4f8a5f;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
   color: #fff;
 }
 
 .chipAktiv:hover {
-  background: #3d7050;
-  border-color: #3d7050;
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
   color: #fff;
 }
 
-/* Submit button */
+/* ─── Submit ─────────────────────────────────────────────────────────────── */
 
 .schaltflaeche {
-  padding: 0.75rem 1.5rem;
-  background: #4f8a5f;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 var(--space-6);
+  background: var(--color-accent);
   color: #fff;
   border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
-  transition: background 0.15s;
-  align-self: flex-start;
+  transition: background var(--transition-fast);
+  margin-top: var(--space-3);
 }
 
 .schaltflaeche:hover:not(:disabled) {
-  background: #3d7050;
+  background: var(--color-accent-hover);
 }
 
 .schaltflaeche:disabled {
-  opacity: 0.6;
+  opacity: 0.55;
   cursor: not-allowed;
 }
 
-/* Error */
+/* ─── Error ──────────────────────────────────────────────────────────────── */
 
 .fehlerHinweis {
-  font-size: 0.875rem;
-  color: #dc2626;
   margin: 0;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+  background: var(--color-error-subtle);
+  border: 1px solid var(--color-error-border);
+  border-radius: var(--radius-md);
 }
 
-/* Success */
+/* ─── Success ────────────────────────────────────────────────────────────── */
 
 .erfolg {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.75rem;
-  padding: 1.5rem;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  border-radius: 12px;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  background: var(--color-success-subtle);
+  border: 1px solid var(--color-success-border);
+  border-radius: var(--radius-lg);
 }
 
 .erfolgTitel {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: #15803d;
   margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-success);
+  line-height: var(--line-height-tight);
 }
 
 .erfolg p {
   margin: 0;
-  color: #374151;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
 }
