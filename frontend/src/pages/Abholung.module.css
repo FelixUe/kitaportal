@@ -1,0 +1,301 @@
+/* shared page shell */
+.seite {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6) var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.titel {
+  margin: 0 0 var(--space-4);
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  line-height: var(--line-height-tight);
+}
+
+/* ─── Sections ───────────────────────────────────────────────────────────── */
+
+.abschnitt {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.abschnittKopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.abschnittTitel {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* ─── Form ───────────────────────────────────────────────────────────────── */
+
+.formular {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.personFormular {
+  margin-top: var(--space-2);
+}
+
+.zeile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+@media (max-width: 480px) {
+  .zeile { grid-template-columns: 1fr; }
+}
+
+.feld {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.optional {
+  font-weight: var(--font-weight-normal);
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--color-text-muted);
+}
+
+.eingabe,
+.auswahl,
+.textbereich {
+  width: 100%;
+  padding: 0.625rem var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background: var(--color-surface);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.auswahl {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239a9790' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-4) center;
+  padding-right: var(--space-10);
+  cursor: pointer;
+}
+
+.eingabe:focus,
+.auswahl:focus,
+.textbereich:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 14%, transparent);
+}
+
+.textbereich {
+  resize: vertical;
+  min-height: 72px;
+  line-height: var(--line-height-normal);
+}
+
+.formularAktionen {
+  display: flex;
+  gap: var(--space-3);
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+
+.schaltflaeche {
+  min-height: 48px;
+  width: 100%;
+  padding: 0 var(--space-6);
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.schaltflaeche:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+}
+
+.schaltflaeche:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.formularAktionen .schaltflaeche {
+  width: auto;
+  min-height: 40px;
+  flex: 1;
+}
+
+.abbrechenSchaltflaeche {
+  flex: 1;
+  min-height: 40px;
+  padding: 0 var(--space-4);
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.abbrechenSchaltflaeche:hover {
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+}
+
+.hinzufuegenSchaltflaeche {
+  padding: var(--space-2) var(--space-4);
+  background: transparent;
+  color: var(--color-accent-text);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--transition-fast);
+}
+
+.hinzufuegenSchaltflaeche:hover {
+  background: var(--color-accent-subtle);
+}
+
+.linkSchaltflaeche {
+  padding: 0;
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-accent-text);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ─── Persons list ───────────────────────────────────────────────────────── */
+
+.personenListe {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.personKarte {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.personAvatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-raised);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.personInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.personName {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.personMeta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* ─── Feedback ───────────────────────────────────────────────────────────── */
+
+.erfolgBox {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background: var(--color-success-subtle);
+  border: 1px solid var(--color-success-border);
+  border-radius: var(--radius-lg);
+}
+
+.erfolgTitel {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-success);
+}
+
+.erfolgBox p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.fehlerHinweis {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+  background: var(--color-error-subtle);
+  border: 1px solid var(--color-error-border);
+  border-radius: var(--radius-md);
+}

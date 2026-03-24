@@ -1,0 +1,307 @@
+.seite {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6) var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.seitenKopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.titel {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  line-height: var(--line-height-tight);
+}
+
+/* ─── Sections ───────────────────────────────────────────────────────────── */
+
+.abschnitt {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.abschnittTitel {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* ─── Form ───────────────────────────────────────────────────────────────── */
+
+.formular {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.zeile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+@media (max-width: 480px) {
+  .zeile { grid-template-columns: 1fr; }
+}
+
+.feld {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.optional {
+  font-weight: var(--font-weight-normal);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.eingabe,
+.auswahl,
+.textbereich {
+  width: 100%;
+  padding: 0.625rem var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background: var(--color-surface);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.auswahl {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239a9790' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-4) center;
+  padding-right: var(--space-10);
+  cursor: pointer;
+}
+
+.eingabe:focus,
+.auswahl:focus,
+.textbereich:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 14%, transparent);
+}
+
+.textbereich {
+  resize: vertical;
+  min-height: 72px;
+  line-height: var(--line-height-normal);
+}
+
+.formularAktionen {
+  display: flex;
+  gap: var(--space-3);
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+
+.schaltflaeche {
+  flex: 1;
+  min-height: 40px;
+  padding: 0 var(--space-5);
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.schaltflaeche:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+}
+
+.schaltflaeche:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.abbrechenSchaltflaeche {
+  flex: 1;
+  min-height: 40px;
+  padding: 0 var(--space-4);
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.abbrechenSchaltflaeche:hover {
+  background: var(--color-surface-raised);
+}
+
+.hinzufuegenSchaltflaeche {
+  padding: var(--space-2) var(--space-4);
+  background: transparent;
+  color: var(--color-accent-text);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--transition-fast);
+}
+
+.hinzufuegenSchaltflaeche:hover {
+  background: var(--color-accent-subtle);
+}
+
+/* ─── Allergy cards ──────────────────────────────────────────────────────── */
+
+.allergienListe {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.allergieKarte {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.allergieKopf {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.allergieName {
+  display: block;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.kindHinweis {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* Severity badges */
+
+.schweregradBadge {
+  flex-shrink: 0;
+  padding: 2px var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.03em;
+}
+
+.schweregrad_hoch {
+  background: var(--color-error-subtle);
+  color: var(--color-error);
+  border: 1px solid var(--color-error-border);
+}
+
+.schweregrad_mittel {
+  background: var(--color-warning-subtle);
+  color: var(--color-warning);
+  border: 1px solid var(--color-warning-border);
+}
+
+.schweregrad_beobachten {
+  background: var(--color-success-subtle);
+  color: var(--color-success);
+  border: 1px solid var(--color-success-border);
+}
+
+/* Trigger tags */
+
+.ausloeserListe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.ausloeserTag {
+  padding: 2px var(--space-3);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* Emergency note */
+
+.notiz {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+  background: var(--color-error-subtle);
+  border: 1px solid var(--color-error-border);
+  border-radius: var(--radius-md);
+  line-height: var(--line-height-normal);
+}
+
+/* ─── Feedback ───────────────────────────────────────────────────────────── */
+
+.fehlerHinweis {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+  background: var(--color-error-subtle);
+  border: 1px solid var(--color-error-border);
+  border-radius: var(--radius-md);
+}
+
+.leerHinweis {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}

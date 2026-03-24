@@ -35,6 +35,12 @@ const AKTIONEN = [
     beschreibung: "Unverträglichkeiten pflegen",
     ziel: "/allergien",
   },
+  {
+    symbol: "◈",
+    label: "Elternrat",
+    beschreibung: "Aufgaben und Projekte",
+    ziel: "/elternrat",
+  },
 ];
 
 const NEUIGKEITEN = [
@@ -127,7 +133,7 @@ export default function Dashboard() {
         <h2 className={styles.abschnittTitel}>Schnellaktionen</h2>
         <div className={styles.aktionenRaster}>
           {AKTIONEN.map((aktion) => (
-            <Link key={aktion.ziel} to={aktion.ziel} className={styles.aktionKarte}>
+            <Link key={aktion.ziel} to={aktion.ziel} className={`${styles.aktionKarte} ${AKTIONEN.indexOf(aktion) === 4 ? styles.aktionKarteBreit : ""}`}>
               <span className={styles.aktionIcon} aria-hidden="true">
                 {aktion.symbol}
               </span>

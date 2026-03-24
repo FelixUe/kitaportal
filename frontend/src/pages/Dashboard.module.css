@@ -168,6 +168,18 @@
   line-height: var(--line-height-tight);
 }
 
+.aktionKarteBreit {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.aktionKarteBreit .aktionLabel,
+.aktionKarteBreit .aktionBeschreibung {
+  flex: none;
+}
+
 .aktionBeschreibung {
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
