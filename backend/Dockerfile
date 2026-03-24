@@ -12,4 +12,4 @@ COPY . .
 
 RUN SECRET_KEY=build-only python manage.py collectstatic --noinput
 
-CMD ["gunicorn", "kitaportal.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "kitaportal.wsgi:application", "--bind", "0.0.0.0:8000", "--timeout", "120"]
