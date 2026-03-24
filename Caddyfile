@@ -1,0 +1,13 @@
+{
+    email {$ADMIN_EMAIL}
+}
+
+{$DOMAIN} {
+    # API und Django-Admin an Backend weiterleiten
+    reverse_proxy /api/* backend:8000
+    reverse_proxy /admin/* backend:8000
+    reverse_proxy /static/* backend:8000
+
+    # Alles andere geht ans Frontend
+    reverse_proxy * frontend:3000
+}

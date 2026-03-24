@@ -1,63 +1,153 @@
-# Deployment – KitaPortal selbst hosten
+# KitaPortal – Deployment-Anleitung
 
-## Was du brauchst
+Diese Anleitung richtet sich an Kita-Leitungen ohne IT-Kenntnisse.
+Am Ende läuft KitaPortal sicher im Internet – mit eigenem SSL-Zertifikat.
 
-- Einen Server (empfohlen: [Hetzner Cloud](https://www.hetzner.com/cloud), CX21, ~5€/Monat)
-- Eine Domain (optional, aber empfohlen)
-- Ca. 30 Minuten Zeit
+---
 
-## Schritt 1 – Server einrichten
+## Was du benötigst
 
+| Was | Empfehlung | Kosten |
+|-----|-----------|--------|
+| Server | Hetzner Cloud CX22 | ~4 €/Monat |
+| Domain | beliebiger Anbieter (z.B. Namecheap, Strato, IONOS) | ~10 €/Jahr |
+| Zeit | ca. 20 Minuten | |
+
+---
+
+## Schritt 1 – Server bei Hetzner mieten
+
+1. Gehe zu [hetzner.com/cloud](https://www.hetzner.com/cloud) und erstelle ein Konto.
+2. Klicke auf **"Add Server"**.
+3. Wähle folgende Einstellungen:
+   - **Location:** Nürnberg oder Falkenstein (Deutschland)
+   - **Image:** Ubuntu 24.04
+   - **Type:** CX22 (2 vCPU, 4 GB RAM)
+   - **SSH Key:** Entweder einen SSH-Key hinterlegen oder ein Root-Passwort setzen lassen.
+4. Klicke auf **"Create & Buy now"**.
+5. Notiere dir die **IP-Adresse** des Servers (z.B. `176.12.34.56`).
+
+---
+
+## Schritt 2 – Domain auf den Server zeigen lassen
+
+Bei deinem Domain-Anbieter einen **A-Record** anlegen:
+
+| Typ | Name | Wert |
+|-----|------|------|
+| A | kita | 176.12.34.56 *(deine Server-IP)* |
+
+> Das Beispiel oben richtet `kita.meinedomain.de` ein.
+> Trage deine eigene Server-IP ein.
+
+**Wichtig:** DNS-Änderungen brauchen bis zu 30 Minuten, bis sie weltweit sichtbar sind.
+Du kannst auf [dnschecker.org](https://dnschecker.org) prüfen, ob deine Domain schon auf den Server zeigt.
+
+---
+
+## Schritt 3 – Per SSH auf den Server verbinden
+
+**Auf dem Mac oder Linux:**
 ```bash
-# Als root auf dem neuen Server:
-apt update && apt upgrade -y
-
-# Docker installieren
-curl -fsSL https://get.docker.com | sh
+ssh root@176.12.34.56
 ```
 
-## Schritt 2 – Coolify installieren (empfohlen)
-
-[Coolify](https://coolify.io) ist ein kostenloses Open-Source-Tool,
-das das Deployment per Klick ermöglicht.
-
-```bash
-curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash
+**Auf Windows:**
+Nutze [PuTTY](https://www.putty.org/) oder die Windows-Eingabeaufforderung:
+```
+ssh root@176.12.34.56
 ```
 
-Danach erreichst du Coolify unter `http://DEINE-IP:8000`.
+---
 
-## Schritt 3 – KitaPortal hinzufügen
+## Schritt 4 – KitaPortal installieren (ein Befehl)
 
-1. In Coolify einloggen
-2. "New Resource" → "Docker Compose"
-3. GitHub-URL: `https://github.com/FelixUe/kitaportal`
-4. Umgebungsvariablen aus `.env.example` eintragen
-5. Deploy klicken
-
-## Manuelles Deployment (ohne Coolify)
+Sobald du auf dem Server eingeloggt bist, folgenden Befehl eingeben und Enter drücken:
 
 ```bash
-git clone https://github.com/FelixUe/kitaportal.git
-cd kitaportal
-cp .env.example .env
-# .env mit echten Werten befüllen (nano .env)
-
-docker compose up -d
-docker compose exec backend python manage.py migrate
-docker compose exec backend python manage.py createsuperuser
+curl -fsSL https://raw.githubusercontent.com/FelixUe/kitaportal/main/setup.sh | bash
 ```
 
-Die App läuft dann auf Port 3000 (Frontend) und 8000 (API).
+Das Skript führt dich durch die Installation:
+
+1. Es fragt nach deiner **Domain** (z.B. `kita.meinedomain.de`)
+2. Es fragt nach deiner **E-Mail-Adresse** (für das SSL-Zertifikat)
+3. Es installiert alles automatisch
+4. Am Ende kannst du direkt einen **Admin-Benutzer** anlegen
+
+Die gesamte Installation dauert ca. 3–5 Minuten.
+
+---
+
+## Schritt 5 – Einloggen
+
+Nach der Installation öffne deinen Browser und rufe auf:
+
+```
+https://kita.meinedomain.de
+```
+
+Das SSL-Zertifikat (das "Schloss" in der Adressleiste) wird beim ersten Aufruf
+automatisch ausgestellt.
+
+---
 
 ## Updates einspielen
 
+Um KitaPortal auf die neueste Version zu aktualisieren:
+
 ```bash
+cd /opt/kitaportal
 git pull
-docker compose up -d --build
-docker compose exec backend python manage.py migrate
+docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --build
+docker compose -f docker-compose.prod.yml --env-file .env.prod exec backend python manage.py migrate
 ```
 
-## Fragen?
+---
 
-→ [GitHub Discussions](../../discussions)
+## Nützliche Befehle
+
+```bash
+# Logs in Echtzeit anschauen
+docker compose -f /opt/kitaportal/docker-compose.prod.yml --env-file /opt/kitaportal/.env.prod logs -f
+
+# Alle Container neu starten
+docker compose -f /opt/kitaportal/docker-compose.prod.yml --env-file /opt/kitaportal/.env.prod restart
+
+# Status der Container prüfen
+docker compose -f /opt/kitaportal/docker-compose.prod.yml --env-file /opt/kitaportal/.env.prod ps
+```
+
+---
+
+## Manuelle Installation (ohne setup.sh)
+
+Falls du das Skript lieber Schritt für Schritt selbst ausführen möchtest:
+
+```bash
+# 1. Docker installieren
+curl -fsSL https://get.docker.com | sh
+
+# 2. Repository klonen
+git clone https://github.com/FelixUe/kitaportal.git /opt/kitaportal
+cd /opt/kitaportal
+
+# 3. Konfiguration anlegen
+cp .env.prod.example .env.prod
+nano .env.prod   # Werte ausfüllen (Strg+O speichern, Strg+X beenden)
+
+# 4. Starten
+docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --build
+
+# 5. Datenbank einrichten
+docker compose -f docker-compose.prod.yml --env-file .env.prod exec backend python manage.py migrate
+
+# 6. Admin-Benutzer anlegen
+docker compose -f docker-compose.prod.yml --env-file .env.prod exec backend python manage.py createsuperuser
+```
+
+---
+
+## Fragen oder Probleme?
+
+Schreib uns in den [GitHub Discussions](https://github.com/FelixUe/kitaportal/discussions).
