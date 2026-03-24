@@ -8,4 +8,6 @@ urlpatterns = [
     path("api/auth/token/", obtain_auth_token, name="api-token-auth"),
     # Allauth-URLs (Registrierung, Passwort zurücksetzen, etc.)
     path("api/auth/", include("allauth.urls")),
+    # Communication-API: Krankmeldungen, Abholerlaubnisse, Allergien, Nachrichten
+    path("api/", include("communication.urls")),
 ]

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 from kita.models import Kind, Gruppe
 
 
@@ -56,7 +57,12 @@ class Allergie(models.Model):
     schweregrad = models.CharField(max_length=20, choices=Schweregrad.choices)
     ausloser = models.JSONField(default=list)  # Liste von Auslösern
     notfallhinweis = models.TextField(blank=True)
-    hinweis = models.TextField(blank=True)
+    hinweis        = models.TextField(blank=True)
+    geloescht_am   = models.DateTimeField(null=True, blank=True)
+
+    def loeschen(self):
+        self.geloescht_am = timezone.now()
+        self.save(update_fields=["geloescht_am"])
 
     def __str__(self):
         return f"{self.bezeichnung} ({self.schweregrad}) – {self.kind}"
